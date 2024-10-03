@@ -62,6 +62,33 @@
         text-align: center;
         margin-top: 40px;
     }
+    /* Styles for the number input section */
+    #calculator {
+        margin-top: 40px;
+        text-align: center;
+    }
+    #calculator input[type="number"] {
+        width: 80px;
+        padding: 10px;
+        font-size: 1em;
+        margin: 5px;
+    }
+    #calculator button {
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #4fc3f7;
+        color: #000;
+        border: none;
+        cursor: pointer;
+    }
+    #calculator button:hover {
+        background-color: #82b1ff;
+    }
+    #result {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #4fc3f7;
+    }
 </style>
 </head>
 <body>
@@ -117,18 +144,31 @@
   </tr>
 </table>
 
+<!-- Calculator Section -->
+<div id="calculator">
+    <h2>Calculate the Sum of Two Numbers</h2>
+    <input type="number" id="num1" placeholder="First number">
+    <input type="number" id="num2" placeholder="Second number">
+    <button onclick="calculateSum()">Calculate</button>
+    <p id="result"></p>
+</div>
+
 <script>
+function calculateSum() {
+    
+    let num1 = parseFloat(document.getElementById("num1").value);
+    let num2 = parseFloat(document.getElementById("num2").value);
 
-let num1 = prompt("Enter the first number:");
-let num2 = prompt("Enter the second number:");
-
-
-num1 = parseFloat(num1);
-num2 = parseFloat(num2);
-
-let sum = num1 + num2;
-
-alert("The sum of the two numbers is: " + sum);
+    
+    if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("result").textContent = "Please enter valid numbers.";
+    } else {
+        
+        let sum = num1 + num2;
+        
+        document.getElementById("result").textContent = "The sum of the two numbers is: " + sum;
+    }
+}
 </script>
 
 </body>
